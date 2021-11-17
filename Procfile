@@ -1,1 +1,1 @@
-web: gunicorn --workers=4 wsgi:app
+web: python3 graph_server.py
