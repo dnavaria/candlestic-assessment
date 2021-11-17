@@ -54,4 +54,5 @@ def update_graph(interval):
                     close=df['close']))
 
     return dcc.Graph(figure=fig,animate=True)
-app.run_server(debug=True, dev_tools_hot_reload=True)
+
+app.run_server(host="0.0.0.0")
