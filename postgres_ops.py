@@ -1,7 +1,7 @@
 import os
 import sys
 from sqlalchemy import create_engine, exc
-from sqlalchemy import Table, Column, String, MetaData, BigInteger
+from sqlalchemy import Table, Column, String, MetaData, DateTime
 class PsqlOps:
     def __init__(self, PSQL_URI):
         
@@ -24,7 +24,7 @@ class PsqlOps:
         try:
             # self.db.execute("CREATE TABLE IF NOT EXISTS CANDLESTICK (time bigint, open text, close text, highest text, lowest text, volume text, future_contract_name text);")
             meta = MetaData(self.db)
-            self.candlestick = Table('candlestick', meta, Column('time', BigInteger), Column('open', String), Column('close', String), Column('highest', String), Column('lowest', String), Column('volume', String), Column('futures_contract_name', String))
+            self.candlestick = Table('candlestick', meta, Column('time', DateTime), Column('open', String), Column('close', String), Column('highest', String), Column('lowest', String), Column('volume', String), Column('futures_contract_name', String))
             if not self.candlestick.exists():
                 self.candlestick.create()
         except Exception as e:
