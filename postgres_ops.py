@@ -44,3 +44,16 @@ class PsqlOps:
             print("Invalid values received")
             return False    
         
+    def get_all_rows(self):
+        try:
+            with self.db.connect() as connection:
+                select_query = self.candlestick.select()
+                data = connection.execute(select_query)
+                return data
+        except Exception as e:
+            print(f"Exception occured while fetching data :: {e}")
+            return None
+                
+                
+                
+            
